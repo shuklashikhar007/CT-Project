@@ -106,9 +106,7 @@ with tabs[1]:
     k2.metric("Worst-case S(CH4)", f"{worst.S_pct:.2f}%")
     k3.metric("Worst at", f"{worst.T_C:.0f} C, {worst.P_bar} bar, {worst.ratio}")
     (st.success if ok == 1 else st.error)(
-        f"Equilibrium selectivity {'holds' if ok == 1 else 'FAILS'} across the envelope. "
-        "This is a thermodynamic bound on CO formation, so say 'equilibrium-predicted' on the slide. "
-        "Real catalyst selectivity still needs a measured data point from literature.")
+        f"Equilibrium selectivity {'holds' if ok == 1 else 'FAILS'} across the envelope. ")
     rsel = st.selectbox("Show H2:CO2 =", sorted(G.ratio.unique()), index=sorted(G.ratio.unique()).index(4.0) if 4.0 in set(G.ratio) else 0)
     H = G[G.ratio == rsel].pivot(index="P_bar", columns="T_C", values="S_pct")
     hm = go.Figure(go.Heatmap(z=H.values, x=H.columns, y=H.index.astype(str), colorscale="RdYlGn", zmin=min(80, H.values.min()), zmax=100,
