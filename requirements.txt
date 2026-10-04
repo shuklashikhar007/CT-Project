@@ -1,0 +1,13 @@
+streamlit
+numpy
+scipy
+pandas
+plotly
+pypdf
+pydantic
+langchain
+langchain-core
+langchain-google-genai
+langchain-anthropic
+langchain-openai
+langchain-groq
